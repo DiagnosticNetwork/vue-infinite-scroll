@@ -1,6 +1,6 @@
 # vue-infinite-scroll
 
-vue-infinite-scroll is an infinite scroll directive for vue.js.
+vue-infinite-scroll is an infinite scroll directive for vue.js, forked to provide better W3C validity support, by using `data-` attributes to control options.
 
 # Install
 
@@ -55,7 +55,7 @@ Use v-infinite-scroll to enable the infinite scroll, and use infinite-scroll-* a
 The method appointed as the value of v-infinite-scroll will be executed when the bottom of the element reaches the bottom of the viewport.
 
 ```HTML
-<div v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="10">
+<div v-infinite-scroll="loadMore" data-infinite-scroll-disabled="busy" data-infinite-scroll-distance="10">
   ...
 </div>
 ```
@@ -84,15 +84,17 @@ new Vue({
 });
 ```
 
-# Options
+# data- Options
+
+All attributes should be prefixed with `data-`, excluding `v-infinite-scroll`.
 
 | Option | Description |
 | ----- | ----- |
-| infinite-scroll-disabled | infinite scroll will be disabled if the value of this attribute is true. |
-| infinite-scroll-distance | Number(default = 0) - the minimum distance between the bottom of the element and the bottom of the viewport before the v-infinite-scroll method is executed. |
-| infinite-scroll-immediate-check | Boolean(default = true) - indicates that the directive should check immediately after bind. Useful if it's possible that the content is not tall enough to fill up the scrollable container. |
-| infinite-scroll-listen-for-event | infinite scroll will check again when the event is emitted in Vue instance. |
-| infinite-scroll-throttle-delay | Number(default = 200) - interval(ms) between next time checking and this time  |
+| data-infinite-scroll-disabled | infinite scroll will be disabled if the value of this attribute is true. |
+| data-infinite-scroll-distance | Number(default = 0) - the minimum distance between the bottom of the element and the bottom of the viewport before the v-infinite-scroll method is executed. |
+| data-infinite-scroll-immediate-check | Boolean(default = true) - indicates that the directive should check immediately after bind. Useful if it's possible that the content is not tall enough to fill up the scrollable container. |
+| data-infinite-scroll-listen-for-event | infinite scroll will check again when the event is emitted in Vue instance. |
+| data-infinite-scroll-throttle-delay | Number(default = 200) - interval(ms) between next time checking and this time  |
 
 ## Development
 

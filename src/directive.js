@@ -93,7 +93,7 @@ var doBind = function () {
   var directive = this;
   var element = directive.el;
 
-  var throttleDelayExpr = element.getAttribute('infinite-scroll-throttle-delay');
+  var throttleDelayExpr = element.getAttribute('data-infinite-scroll-throttle-delay');
   var throttleDelay = 200;
   if (throttleDelayExpr) {
     throttleDelay = Number(directive.vm[throttleDelayExpr] || throttleDelayExpr);
@@ -111,7 +111,7 @@ var doBind = function () {
     directive.scrollEventTarget.removeEventListener('scroll', directive.scrollListener);
   });
 
-  var disabledExpr = element.getAttribute('infinite-scroll-disabled');
+  var disabledExpr = element.getAttribute('data-infinite-scroll-disabled');
   var disabled = false;
 
   if (disabledExpr) {
@@ -125,7 +125,7 @@ var doBind = function () {
   }
   directive.disabled = disabled;
 
-  var distanceExpr = element.getAttribute('infinite-scroll-distance');
+  var distanceExpr = element.getAttribute('data-infinite-scroll-distance');
   var distance = 0;
   if (distanceExpr) {
     distance = Number(directive.vm[distanceExpr] || distanceExpr);
@@ -135,7 +135,7 @@ var doBind = function () {
   }
   directive.distance = distance;
 
-  var immediateCheckExpr = element.getAttribute('infinite-scroll-immediate-check');
+  var immediateCheckExpr = element.getAttribute('data-infinite-scroll-immediate-check');
   var immediateCheck = true;
   if (immediateCheckExpr) {
     immediateCheck = Boolean(directive.vm[immediateCheckExpr]);
@@ -146,7 +146,7 @@ var doBind = function () {
     doCheck.call(directive);
   }
 
-  var eventName = element.getAttribute('infinite-scroll-listen-for-event');
+  var eventName = element.getAttribute('data-infinite-scroll-listen-for-event');
   if (eventName) {
     directive.vm.$on(eventName, function() {
       doCheck.call(directive);

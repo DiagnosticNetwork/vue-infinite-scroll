@@ -22,10 +22,10 @@ const createVM = (targetElement = 'window', distance = 0, immediate = true) => {
       template = `<div class="app"
                     style="height: 1200px; width: 400px; background-color: #000"
                     v-infinite-scroll="loadMore()"
-                    infinite-scroll-disabled="busy"
-                    infinite-scroll-distance="${distance}"
-                    infinite-scroll-immediate-check="${immediate}"
-                    infinite-scroll-listen-for-event="docheck">
+                    data-infinite-scroll-disabled="busy"
+                    data-infinite-scroll-distance="${distance}"
+                    data-infinite-scroll-immediate-check="${immediate}"
+                    data-infinite-scroll-listen-for-event="docheck">
                   </div>`;
       break;
     case 'parentNode':
@@ -33,10 +33,10 @@ const createVM = (targetElement = 'window', distance = 0, immediate = true) => {
                   style="height: 600px; width: 400px; overflow: auto; background-color: #eee;">
                   <div style="height: 1200px; width: 400px;"
                     v-infinite-scroll="loadMore()"
-                    infinite-scroll-disabled="busy"
-                    infinite-scroll-distance="${distance}"
-                    infinite-scroll-immediate-check="${immediate}"
-                    infinite-scroll-listen-for-event="docheck">
+                    data-infinite-scroll-disabled="busy"
+                    data-infinite-scroll-distance="${distance}"
+                    data-infinite-scroll-immediate-check="${immediate}"
+                    data-infinite-scroll-listen-for-event="docheck">
                   </div>
                 </div>`;
       break;
@@ -45,10 +45,10 @@ const createVM = (targetElement = 'window', distance = 0, immediate = true) => {
     template = `<div class="app"
                   style="height: 600px; width: 400px; background-color: #ccc; overflow: auto;"
                   v-infinite-scroll="loadMore()"
-                  infinite-scroll-disabled="busy"
-                  infinite-scroll-distance="${distance}"
-                  infinite-scroll-immediate-check="${immediate}"
-                  infinite-scroll-listen-for-event="docheck">
+                  data-infinite-scroll-disabled="busy"
+                  data-infinite-scroll-distance="${distance}"
+                  data-infinite-scroll-immediate-check="${immediate}"
+                  data-infinite-scroll-listen-for-event="docheck">
                   <div style="height: 1000px">1</div>
                 </div>`;
       break;
@@ -118,7 +118,7 @@ scrollTargetElements.forEach(targetElement => {
       done();
     });
 
-    it('test "infinite-scroll-listen-for-event"', done => {
+    it('test "data-infinite-scroll-listen-for-event"', done => {
       vm.$emit('docheck');
       expect(vm.loadMore.calls.count()).toEqual(2);
       done();
